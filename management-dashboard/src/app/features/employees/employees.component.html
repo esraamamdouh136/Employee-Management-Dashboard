@@ -1,0 +1,47 @@
+<div class="container mx-auto px-4">
+    <div class="flex justify-between items-center mb-4">
+      <h2 class="text-xl font-semibold">Employee Records</h2>
+      <button
+        class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+        (click)="addEmployee()"
+      >
+        Add Employee
+      </button>
+    </div>
+  
+    <table class="min-w-full bg-white border border-gray-300">
+      <thead>
+        <tr>
+          <th class="px-4 py-2 border-b">ID</th>
+          <th class="px-4 py-2 border-b">Name</th>
+          <th class="px-4 py-2 border-b">Email</th>
+          <th class="px-4 py-2 border-b">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let employee of employees"
+          class="hover:bg-gray-100"
+        >
+          <td class="px-4 py-2 border-b">{{ employee.id }}</td>
+          <td class="px-4 py-2 border-b">{{ employee.name }}</td>
+          <td class="px-4 py-2 border-b">{{ employee.email }}</td>
+          <td class="px-4 py-2 border-b">
+            <button
+              class="text-green-500 hover:text-green-700 mr-2"
+              (click)="editEmployee(employee)"
+            >
+              ✏️
+            </button>
+            <button
+              class="text-red-500 hover:text-red-700"
+              (click)="deleteEmployee(employee.id)"
+            >
+              🗑️
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+   
