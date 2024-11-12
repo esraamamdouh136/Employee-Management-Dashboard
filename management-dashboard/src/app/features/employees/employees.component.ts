@@ -4,12 +4,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NamefilterPipe } from '../../shared/components/pipe/filter.pipe';
 import { EmployeeService } from '../../core/services/employee.service';
-import { RouterModule } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-employees',
   standalone: true,
-  imports: [CommonModule, FormsModule, NamefilterPipe, RouterModule],
+  imports: [RouterOutlet],
   templateUrl: './employees.component.html',
   styleUrl: './employees.component.scss',
 })
