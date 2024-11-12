@@ -5,7 +5,7 @@ import { EmployeesComponent } from './features/employees/employees.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet , EmployeesComponent],
+  imports: [RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

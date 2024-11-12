@@ -1,39 +1,29 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Employee } from '../../shared/model/employee.model';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { NamefilterPipe } from '../../shared/components/pipe/filter.pipe';
+import { EmployeeService } from '../../core/services/employee.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-employees',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule, NamefilterPipe, RouterModule],
   templateUrl: './employees.component.html',
-  styleUrl: './employees.component.scss'
+  styleUrl: './employees.component.scss',
 })
 export class EmployeesComponent {
-  employees: any[] = [
-    { id: 1, name: 'Alice Johnson', email: 'alice@example.com' },
-    { id: 2, name: 'Bob Smith', email: 'bob@example.com' },
-    { id: 3, name: 'Charlie Brown', email: 'charlie@example.com' },
-  ];
+  private employeeService = inject(EmployeeService);
+  inputVal: string = '';
+  employees: Employee[] = [];
 
-  addEmployee() {
-    // const newEmployee: Employee = {
-    //   id: this.employees.length + 1,
-    //   name: `New Employee ${this.employees.length + 1}`,
-    //   email: `new${this.employees.length + 1}@example.com`,
-    // };
-    // this.employees.push(newEmployee);
+  ngOnInit() {
+    this.getEmployeesList();
   }
-
-  editEmployee(employee: Employee) {
-    // const updatedName = prompt('Edit Name:', employee.name);
-    // if (updatedName) {
-    //   employee.name = updatedName;
-    // }
+  getEmployeesList() {
+    this.employeeService.getEmployees().subscribe((res) => {
+      this.employees = res;
+    });
   }
-
-  deleteEmployee(id: number) {
-  //   this.employees = this.employees.filter((employee) => employee.id !== id);
-  // }
-}
 }
