@@ -1,1 +1,45 @@
-<p>dashboard works!</p>
+<div class="flex h-screen bg-gray-100">
+  <!-- Main Content -->
+  <div class="flex-1 p-6 overflow-y-auto">
+    <!-- Navbar -->
+    <div class="flex justify-between items-center mb-6">
+      <h1 class="text-3xl font-bold text-gray-700">Dashboard</h1>
+      <button
+        class="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600"
+        routerLink="/employees/add"
+      >
+        Add Employee
+      </button>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+      <div class="bg-white p-4 rounded-lg shadow-lg flex flex-col">
+        <h2 class="text-lg font-semibold">Total Employees</h2>
+        <p class="text-3xl font-bold">150</p>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow-lg flex flex-col">
+        <h2 class="text-lg font-semibold">Departments</h2>
+        <p class="text-3xl font-bold">5</p>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow-lg flex flex-col">
+        <h2 class="text-lg font-semibold">New Hires</h2>
+        <p class="text-3xl font-bold">12</p>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow-lg flex flex-col">
+        <h2 class="text-lg font-semibold">On Leave</h2>
+        <p class="text-3xl font-bold">8</p>
+      </div>
+    </div>
+    <div class="lg:flex justify-center items-center">
+      <button
+        class="bg-blue-500 w-1/4 text-white p-4 mt-4 rounded-lg hover:bg-blue-600"
+        routerLink="/employees"
+      >
+        View Employee List
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- <app-employees /> -->
