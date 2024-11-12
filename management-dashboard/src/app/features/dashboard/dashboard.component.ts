@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { EmployeesComponent } from '../employees/employees.component';
-import { RouterModule } from '@angular/router';
+import { RouterModule, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
