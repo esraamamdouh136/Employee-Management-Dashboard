@@ -7,7 +7,7 @@ import { EditEmployeeComponent } from "./edit-employee/edit-employee.component";
 const routes: Routes = [
     { path: 'list', component: ListEmployeeComponent }, // Default child route
     { path: 'add', component: AddEmployeeComponent },
-    { path: 'edit', component: EditEmployeeComponent },
+    { path: '/edit/:id', component: AddEmployeeComponent },
   ];
   
   @NgModule({

@@ -1,74 +1,80 @@
-
 <div class="container mx-auto px-4">
-
-
-    <div class="flex justify-between items-center my-6">
-      <h1 class="text-3xl font-bold text-gray-700">Employees List</h1>
-      <button
-        class="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600"
-        routerLink="/employees/add"
-      >
-        Add Employee
-      </button>
-    </div>
-    <div class="flex items-center w-sm mx-auto mt-4">
-      <input [(ngModel)]="inputVal"
-        type="text"
-        placeholder="Search employees..."
-        class="w-full p-2 pl-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+  <div class="flex justify-between items-center my-6">
+    <h1 class="text-3xl font-bold text-gray-700">Employees List</h1>
+    <button
+      class="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600"
+      routerLink="/employees/add"
+    >
+      Add Employee
+    </button>
+  </div>
+  <div class="flex items-center w-sm mx-auto mt-4">
+    <input
+      [(ngModel)]="inputVal"
+      type="text"
+      placeholder="Search employees..."
+      class="w-full p-2 pl-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+    />
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="absolute w-5 h-5 ml-3 text-gray-400"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M8 4a4 4 0 104 4H4a4 4 0 104 4v8a8 8 0 1116 0V4a4 4 0 10-8 0z"
       />
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="absolute w-5 h-5 ml-3 text-gray-400"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M8 4a4 4 0 104 4H4a4 4 0 104 4v8a8 8 0 1116 0V4a4 4 0 10-8 0z"
-        />
-      </svg>
-    </div>
-        <table class="min-w-full bg-white border border-gray-300">
-          <thead>
-            <tr>
-              <th class="px-4 py-2 border-b">ID</th>
-              <th class="px-4 py-2 border-b">First Name</th>
-              <th class="px-4 py-2 border-b">Last Name</th>
-              <th class="px-4 py-2 border-b">Email</th>
-              <th class="px-4 py-2 border-b">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            @for(employee of employees | namefilter:inputVal ; track employee.id) {
-            <tr
-              class="hover:bg-gray-100"
-            >
-              <td class="px-4 py-2 border-b text-center">{{ employee.id }}</td>
-              <td class="px-4 py-2 border-b text-center">{{ employee.firstName }}</td>
-              <td class="px-4 py-2 border-b text-center">{{ employee.lastName }}</td>
-              <td class="px-4 py-2 border-b text-center">{{ employee.email }}</td>
-              <td class="px-4 py-2 border-b text-center">
-                <button
-                  class="text-green-500 hover:text-green-700 mr-2"
-                >
-                  ✏️
-                </button>
-                <button
-                  class="text-red-500 hover:text-red-700"
-                  (click)="deleteEmployee(employee.id)"
-                >
-                  🗑️
-                </button>
-              </td>
-            </tr>
-          }
-          @empty {
-            <p>No articles found</p>
-          }
-          </tbody>
-        </table>
-      </div>
+    </svg>
+  </div>
+  <table class="min-w-full bg-white border border-gray-300">
+    <thead>
+      <tr>
+        <th class="px-4 py-2 border-b">ID</th>
+        <th class="px-4 py-2 border-b">First Name</th>
+        <th class="px-4 py-2 border-b">Last Name</th>
+        <th class="px-4 py-2 border-b">Email</th>
+        <th class="px-4 py-2 border-b">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for(employee of employees | namefilter:inputVal ; track employee.id) {
+      <tr class="hover:bg-gray-100">
+        <td class="px-4 py-2 border-b text-center">{{ employee.id }}</td>
+        <td class="px-4 py-2 border-b text-center">{{ employee.firstName }}</td>
+        <td class="px-4 py-2 border-b text-center">{{ employee.lastName }}</td>
+        <td class="px-4 py-2 border-b text-center">{{ employee.email }}</td>
+        <td class="px-4 py-2 border-b text-center">
+          <button class="text-green-500 hover:text-green-700 mr-2"
+          routerLink="/employees/edit/{{employee.id}}">✏️</button>
+          <button
+            class="text-red-500 hover:text-red-700"
+            (click)="deleteEmployee(employee.id)"
+          >
+            🗑️
+          </button>
+        </td>
+      </tr>
+      } @empty {
+      <!-- Main Text -->
+      <p class="text-2xl font-semibold text-gray-700 mb-2 text-center">
+        No Articles Found
+      </p>
+      }
+    </tbody>
+  </table>
+</div>
+
+<app-delete-popup
+  *ngIf="showDeletePopup"
+  (confirmDelete)="handleDelete()"
+  (cancelDelete)="showDeletePopup = false"
+></app-delete-popup>
+
+<app-success-popup
+  *ngIf="showSuccessPopup"
+  (closePopup)="showSuccessPopup = false"
+></app-success-popup>
