@@ -2,12 +2,13 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { Employee } from '../../model/employee.model';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 
 @Component({
   selector: 'app-employee-form',
   standalone: true,
-imports: [ReactiveFormsModule , CommonModule],
+imports: [ReactiveFormsModule , CommonModule, RouterModule],
   templateUrl: './employee-form.component.html',
   styleUrl: './employee-form.component.scss'
 })
