@@ -33,7 +33,7 @@ export class EmployeeFormComponent {
 
   initForm() {
     this.employeeForm = this.fb.group({
-      id : ['', [Validators.required , Validators.pattern('^[0-9]*$')]],
+      id : ['', Validators.required],
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
