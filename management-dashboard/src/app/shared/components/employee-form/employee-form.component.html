@@ -1,63 +1,93 @@
-
 <app-back-button [routeUrl]="'/employees/list'" />
 
 <div class="max-w-2xl mx-auto p-4 bg-white mt-6">
-    <h2 class="text-xl font-semibold mb-4">{{ formTitle }}</h2>
-    <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
-      <div class="mb-4">
-        <label for="id" class="block text-gray-700">ID</label>
-        <input
-          id="id"
-          type="text"
-          formControlName="id"
-          class="w-full px-4 py-2 border rounded-md"
-          placeholder="ID"
+  <h2 class="text-xl font-semibold mb-4">{{ formTitle }}</h2>
+  <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+    <div class="mb-4">
+      <label for="id" class="block text-gray-700">ID</label>
+      <input
+        id="id"
+        type="text"
+        formControlName="id"
+        class="w-full px-4 py-2 border rounded-md"
+        placeholder="ID"
+        [readonly]="employeeData?.id"
+        inputNumberOnly
         />
-      </div>
-      <div class="mb-4">
-        <label for="firstName" class="block text-gray-700">First Name</label>
-        <input
-          id="firstName"
-          type="text"
-          formControlName="firstName"
-          class="w-full px-4 py-2 border rounded-md"
-          placeholder="First Name"
-        />
-        <div *ngIf="employeeForm.get('firstName')?.invalid && employeeForm.get('firstName')?.touched"
-             class="text-red-500 text-sm">First Name is required</div>
-      </div>
-      <div class="mb-4">
-        <label for="lastName" class="block text-gray-700">Last Name</label>
-        <input
-          id="lastName"
-          type="text"
-          formControlName="lastName"
-          class="w-full px-4 py-2 border rounded-md"
-          placeholder="Last Name"
-        />
-        <div *ngIf="employeeForm.get('lastName')?.invalid && employeeForm.get('lastName')?.touched"
-             class="text-red-500 text-sm">Last Name is required</div>
-      </div>
-
-      <div class="mb-4">
-        <label for="email" class="block text-gray-700">Email</label>
-        <input
-          id="email"
-          type="email"
-          formControlName="email"
-          class="w-full px-4 py-2 border rounded-md"
-          placeholder="Employee Email"
-        />
-        <div *ngIf="employeeForm.get('email')?.invalid && employeeForm.get('email')?.touched"
-             class="text-red-500 text-sm">Valid email is required</div>
-      </div>
-
-      <button
-        type="submit"
-        class="w-full bg-blue-500 text-white py-2 rounded-md"
-        [disabled]="employeeForm.invalid"
+      <div
+        *ngIf="
+          employeeForm.get('id')?.invalid && employeeForm.get('id')?.touched
+        "
+        class="text-red-500 text-sm"
       >
-        {{ submitButtonLabel }}
-      </button>
-    </form>
-  </div>
+        ID is required
+      </div>
+    </div>
+    <div class="mb-4">
+      <label for="firstName" class="block text-gray-700">First Name</label>
+      <input
+        id="firstName"
+        type="text"
+        formControlName="firstName"
+        class="w-full px-4 py-2 border rounded-md"
+        placeholder="First Name"
+      />
+      <div
+        *ngIf="
+          employeeForm.get('firstName')?.invalid &&
+          employeeForm.get('firstName')?.touched
+        "
+        class="text-red-500 text-sm"
+      >
+        First Name is required
+      </div>
+    </div>
+    <div class="mb-4">
+      <label for="lastName" class="block text-gray-700">Last Name</label>
+      <input
+        id="lastName"
+        type="text"
+        formControlName="lastName"
+        class="w-full px-4 py-2 border rounded-md"
+        placeholder="Last Name"
+      />
+      <div
+        *ngIf="
+          employeeForm.get('lastName')?.invalid &&
+          employeeForm.get('lastName')?.touched
+        "
+        class="text-red-500 text-sm"
+      >
+        Last Name is required
+      </div>
+    </div>
+
+    <div class="mb-4">
+      <label for="email" class="block text-gray-700">Email</label>
+      <input
+        id="email"
+        type="email"
+        formControlName="email"
+        class="w-full px-4 py-2 border rounded-md"
+        placeholder="Employee Email"
+      />
+      <div
+        *ngIf="
+          employeeForm.get('email')?.invalid &&
+          employeeForm.get('email')?.touched
+        "
+        class="text-red-500 text-sm"
+      >
+        Valid email is required
+      </div>
+    </div>
+
+    <button
+      type="submit"
+      class="w-full bg-blue-500 text-white py-2 rounded-md"
+      [disabled]="employeeForm.invalid"
+    >
+      {{ submitButtonLabel }}
+    </button>
+  </form>
+</div>

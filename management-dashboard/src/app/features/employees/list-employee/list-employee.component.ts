@@ -8,42 +8,61 @@ import { EmployeeService } from '../../../core/services/employee.service';
 import { DeletePopupComponent } from '../../../shared/components/delete-popup/delete-popup.component';
 import { SuccessPopupComponent } from '../../../shared/components/success-popup/success-popup.component';
 import { BackButtonComponent } from '../../../shared/components/back-button/back-button.component';
+import { ErrorMessageComponent } from '../../../shared/components/error-message/error-message.component';
 @Component({
   selector: 'app-list-employee',
   standalone: true,
-  imports: [CommonModule, FormsModule, SearchEmployeePipe, RouterModule, DeletePopupComponent, SuccessPopupComponent , BackButtonComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    SearchEmployeePipe,
+    RouterModule,
+    DeletePopupComponent,
+    SuccessPopupComponent,
+    BackButtonComponent,
+    ErrorMessageComponent,
+  ],
   templateUrl: './list-employee.component.html',
-  styleUrl: './list-employee.component.scss'
+  styleUrl: './list-employee.component.scss',
 })
 export class ListEmployeeComponent {
   private employeeService = inject(EmployeeService);
   showDeletePopup = false;
   showSuccessPopup = false;
   inputVal: string = '';
-  employeeId : number
+  employeeId: number=1;
   employees: Employee[] = [];
+  errorMessage: string;
 
   ngOnInit() {
     this.getEmployeesList();
-    console.log(this.employees)
   }
   getEmployeesList() {
-    this.employeeService.getEmployees().subscribe((res) => {
-      this.employees = res;
+    this.employeeService.getEmployees().subscribe({
+      next: (data) => {
+        this.employees = data;
+      },
+      error: (error) => {
+        this.errorMessage = error.message || 'Failed to load employee data';
+      },
     });
   }
   deleteEmployee(id: number): void {
     this.showDeletePopup = true;
-    this.employeeId = id
-   
+    this.employeeId = id;
   }
-  handleDelete(){
+  handleDelete() {
     this.showDeletePopup = false;
-    if(this.employeeId){
-      this.employeeService.deleteEmployee(this.employeeId).subscribe(() => {
+    if (this.employeeId) {
+      this.employeeService.deleteEmployee(this.employeeId).subscribe({
+        next: () => {
         this.employees = this.employees.filter((e) => e.id !== this.employeeId);
+        this.showSuccessPopup = true;
+        },
+        error: (error) => {
+          this.errorMessage = error.message || 'Failed to load employee data';
+        },
       });
-      this.showSuccessPopup = true;
     }
   }
 }
