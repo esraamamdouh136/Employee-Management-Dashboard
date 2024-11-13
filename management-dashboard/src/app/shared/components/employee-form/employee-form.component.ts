@@ -3,12 +3,13 @@ import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { Employee } from '../../model/employee.model';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { BackButtonComponent } from '../back-button/back-button.component';
 
 
 @Component({
   selector: 'app-employee-form',
   standalone: true,
-imports: [ReactiveFormsModule , CommonModule, RouterModule],
+imports: [ReactiveFormsModule , CommonModule, BackButtonComponent],
   templateUrl: './employee-form.component.html',
   styleUrl: './employee-form.component.scss'
 })
@@ -20,7 +21,7 @@ export class EmployeeFormComponent {
 
   @Output() formSubmit = new EventEmitter<Employee>();
 
-  employeeForm!: FormGroup;
+  employeeForm: FormGroup;
   private fb = inject(FormBuilder);
 
   ngOnChanges() {
