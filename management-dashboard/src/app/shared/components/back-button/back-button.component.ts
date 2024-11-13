@@ -6,7 +6,6 @@ import { RouterModule } from '@angular/router';
   standalone: true,
   imports: [RouterModule],
   templateUrl: './back-button.component.html',
-  styleUrl: './back-button.component.scss'
 })
 export class BackButtonComponent {
 @Input() routeUrl : string

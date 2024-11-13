@@ -5,7 +5,6 @@ import { Component, EventEmitter, Output } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './delete-popup.component.html',
-  styleUrl: './delete-popup.component.scss'
 })
 export class DeletePopupComponent {
   @Output() confirmDelete = new EventEmitter<void>();
