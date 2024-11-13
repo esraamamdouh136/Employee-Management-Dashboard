@@ -25,6 +25,7 @@ export class ListEmployeeComponent {
 
   ngOnInit() {
     this.getEmployeesList();
+    console.log(this.employees)
   }
   getEmployeesList() {
     this.employeeService.getEmployees().subscribe((res) => {
