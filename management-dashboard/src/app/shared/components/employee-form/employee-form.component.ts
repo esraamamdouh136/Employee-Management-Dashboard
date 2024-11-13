@@ -15,13 +15,14 @@ export class EmployeeFormComponent {
   @Input() employeeData: Employee | null = null;
   @Input() formTitle: string = 'Employee Form';
   @Input() submitButtonLabel: string = 'Submit';
+  @Input() id: number = 1;
 
   @Output() formSubmit = new EventEmitter<Employee>();
 
   employeeForm!: FormGroup;
   private fb = inject(FormBuilder);
 
-  ngOnInit() {
+  ngOnChanges() {
     this.initForm();
     if (this.employeeData) {
       this.employeeForm.patchValue(this.employeeData);
@@ -30,9 +31,10 @@ export class EmployeeFormComponent {
 
   initForm() {
     this.employeeForm = this.fb.group({
-      name: ['', Validators.required],
+      id : [this.id],
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      position: [''],
     });
   }
 

@@ -30,18 +30,19 @@
       />
     </svg>
   </div>
-  <table class="min-w-full bg-white border border-gray-300">
-    <thead>
+  <div class="overflow-x-auto bg-white p-4 shadow-md rounded-lg">
+    <table class="min-w-full table-auto">
+      <thead>
       <tr>
-        <th class="px-4 py-2 border-b">ID</th>
-        <th class="px-4 py-2 border-b">First Name</th>
-        <th class="px-4 py-2 border-b">Last Name</th>
-        <th class="px-4 py-2 border-b">Email</th>
-        <th class="px-4 py-2 border-b">Actions</th>
+        <th class="px-4 py-2 text-sm font-medium text-gray-600 hidden md:table-cell">ID</th>
+        <th class="px-4 py-2 text-sm font-medium text-gray-600 hidden md:table-cell">First Name</th>
+        <th class="px-4 py-2 text-sm font-medium text-gray-600 hidden md:table-cell">Last Name</th>
+        <th class="px-4 py-2 text-sm font-medium text-gray-600 hidden md:table-cell">Email</th>
+        <th class="px-4 py-2 text-sm font-medium text-gray-600 hidden md:table-cell">Actions</th>
       </tr>
     </thead>
     <tbody>
-      @for(employee of employees | namefilter:inputVal ; track employee.id) {
+      @for(employee of employees |searchEmployee:inputVal ; track employee.id) {
       <tr class="hover:bg-gray-100">
         <td class="px-4 py-2 border-b text-center">{{ employee.id }}</td>
         <td class="px-4 py-2 border-b text-center">{{ employee.firstName }}</td>
@@ -52,20 +53,20 @@
           routerLink="/employees/edit/{{employee.id}}">✏️</button>
           <button
             class="text-red-500 hover:text-red-700"
-            (click)="deleteEmployee(employee.id)"
+          (click)="deleteEmployee(employee.id)"
           >
             🗑️
           </button>
         </td>
       </tr>
       } @empty {
-      <!-- Main Text -->
       <p class="text-2xl font-semibold text-gray-700 mb-2 text-center">
         No Articles Found
       </p>
       }
     </tbody>
   </table>
+  </div>
 </div>
 
 <app-delete-popup

@@ -3,14 +3,14 @@ import { Employee } from '../../../shared/model/employee.model';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { NamefilterPipe } from '../../../shared/components/pipe/filter.pipe';
+import { SearchEmployeePipe } from '../../../shared/pipe/search-employee.pipe';
 import { EmployeeService } from '../../../core/services/employee.service';
 import { DeletePopupComponent } from '../../../shared/components/delete-popup/delete-popup.component';
 import { SuccessPopupComponent } from '../../../shared/components/success-popup/success-popup.component';
 @Component({
   selector: 'app-list-employee',
   standalone: true,
-  imports: [CommonModule, FormsModule, NamefilterPipe, RouterModule, DeletePopupComponent, SuccessPopupComponent],
+  imports: [CommonModule, FormsModule, SearchEmployeePipe, RouterModule, DeletePopupComponent, SuccessPopupComponent],
   templateUrl: './list-employee.component.html',
   styleUrl: './list-employee.component.scss'
 })
