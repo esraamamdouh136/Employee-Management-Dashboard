@@ -1,4 +1,6 @@
 
+<app-error-message [errorMessage]="errorMessage" />
+
 <app-back-button [routeUrl]="'/dashboard'" />
 <div class="container mx-auto px-4">
   <div class="flex justify-between items-center my-6">
@@ -43,7 +45,7 @@
         <th class="px-4 py-2 text-sm font-medium text-gray-600 hidden md:table-cell">Actions</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody *ngIf="employees.length > 0; else noDataFound">
       @for(employee of employees |searchEmployee:inputVal ; track employee.id) {
       <tr class="hover:bg-gray-100">
         <td class="px-4 py-2 border-b text-center">{{ employee.id }}</td>
@@ -61,15 +63,18 @@
           </button>
         </td>
       </tr>
-      } @empty {
-      <p class="text-2xl font-semibold text-gray-700 mb-2 text-center">
-        No Articles Found
-      </p>
-      }
+      } 
     </tbody>
+    <ng-template #noDataFound>
+      <tr>
+        <td colspan="4" class="text-center text-gray-500 py-4">No data found</td>
+      </tr>
+    </ng-template>
   </table>
   </div>
-</div>
+  </div>
+
+
 
 <app-delete-popup
   *ngIf="showDeletePopup"
