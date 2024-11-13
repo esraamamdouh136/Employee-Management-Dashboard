@@ -5,6 +5,7 @@ import { Employee } from '../../shared/model/employee.model';
 
 @Injectable({ providedIn: 'root' })
 export class EmployeeService {
+
   private apiUrl = 'http://localhost:3000/employees';
   private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
   constructor(private http: HttpClient) {}

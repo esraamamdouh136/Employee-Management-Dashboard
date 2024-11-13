@@ -1,9 +1,4 @@
-import { Component, inject } from '@angular/core';
-import { Employee } from '../../shared/model/employee.model';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { NamefilterPipe } from '../../shared/components/pipe/filter.pipe';
-import { EmployeeService } from '../../core/services/employee.service';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
@@ -13,17 +8,5 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './employees.component.html',
   styleUrl: './employees.component.scss',
 })
-export class EmployeesComponent {
-  private employeeService = inject(EmployeeService);
-  inputVal: string = '';
-  employees: Employee[] = [];
-
-  ngOnInit() {
-    this.getEmployeesList();
-  }
-  getEmployeesList() {
-    this.employeeService.getEmployees().subscribe((res) => {
-      this.employees = res;
-    });
-  }
+export class EmployeesComponent { 
 }
