@@ -11,7 +11,6 @@ import { ErrorMessageComponent } from '../../../shared/components/error-message/
   standalone: true,
   imports: [CommonModule, EmployeeFormComponent, ErrorMessageComponent],
   templateUrl: './add-edit-employee.component.html',
-  styleUrl: './add-edit-employee.component.scss',
 })
 export class AddEditEmployeeComponent {
   private employeeService = inject(EmployeeService);

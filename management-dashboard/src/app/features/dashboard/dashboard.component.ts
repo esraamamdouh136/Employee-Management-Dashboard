@@ -6,7 +6,6 @@ import { RouterModule, RouterOutlet } from '@angular/router';
   standalone: true,
   imports: [RouterModule],
   templateUrl: './dashboard.component.html',
-  styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent {
 

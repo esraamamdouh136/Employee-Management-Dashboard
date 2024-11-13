@@ -12,7 +12,6 @@ import { NumberOnlyDirective } from '../../directive/number-only.directive';
   standalone: true,
 imports: [ReactiveFormsModule , CommonModule, BackButtonComponent , NumberOnlyDirective],
   templateUrl: './employee-form.component.html',
-  styleUrl: './employee-form.component.scss'
 })
 export class EmployeeFormComponent {
   @Input() employeeData: Employee | null = null;

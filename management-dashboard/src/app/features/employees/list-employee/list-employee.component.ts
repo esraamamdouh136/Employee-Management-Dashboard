@@ -23,7 +23,6 @@ import { ErrorMessageComponent } from '../../../shared/components/error-message/
     ErrorMessageComponent,
   ],
   templateUrl: './list-employee.component.html',
-  styleUrl: './list-employee.component.scss',
 })
 export class ListEmployeeComponent {
   private employeeService = inject(EmployeeService);

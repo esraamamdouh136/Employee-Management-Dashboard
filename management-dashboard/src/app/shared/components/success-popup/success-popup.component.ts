@@ -5,7 +5,6 @@ import { Component, EventEmitter, Output } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './success-popup.component.html',
-  styleUrl: './success-popup.component.scss'
 })
 export class SuccessPopupComponent {
   @Output() closePopup = new EventEmitter<void>();
