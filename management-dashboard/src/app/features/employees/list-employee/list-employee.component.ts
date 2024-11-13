@@ -7,10 +7,11 @@ import { SearchEmployeePipe } from '../../../shared/pipe/search-employee.pipe';
 import { EmployeeService } from '../../../core/services/employee.service';
 import { DeletePopupComponent } from '../../../shared/components/delete-popup/delete-popup.component';
 import { SuccessPopupComponent } from '../../../shared/components/success-popup/success-popup.component';
+import { BackButtonComponent } from '../../../shared/components/back-button/back-button.component';
 @Component({
   selector: 'app-list-employee',
   standalone: true,
-  imports: [CommonModule, FormsModule, SearchEmployeePipe, RouterModule, DeletePopupComponent, SuccessPopupComponent],
+  imports: [CommonModule, FormsModule, SearchEmployeePipe, RouterModule, DeletePopupComponent, SuccessPopupComponent , BackButtonComponent],
   templateUrl: './list-employee.component.html',
   styleUrl: './list-employee.component.scss'
 })
@@ -19,7 +20,7 @@ export class ListEmployeeComponent {
   showDeletePopup = false;
   showSuccessPopup = false;
   inputVal: string = '';
-  employeeId! : number
+  employeeId : number
   employees: Employee[] = [];
 
   ngOnInit() {

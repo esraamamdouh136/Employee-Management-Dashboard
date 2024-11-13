@@ -3,12 +3,12 @@ import { Employee } from '../model/employee.model';
 
 @Pipe({
   name: 'searchEmployee',
-  standalone: true, // Mark the pipe as standalone
+  standalone: true, 
 })
 export class SearchEmployeePipe implements PipeTransform {
   transform(employees: Employee[], searchTerm: string): Employee[] {
     if (!employees || !searchTerm) {
-      return employees;  // If no employees or search term, return the original list
+      return employees; 
     }
 
     return employees.filter(employee =>
